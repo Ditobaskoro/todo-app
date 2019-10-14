@@ -1,0 +1,78 @@
+.todo {
+  min-height: 100vh;
+  width: 600px;
+  background-color: #fafafa;
+  color: #444;
+}
+
+.todo-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #fafafa;
+  color: #444;
+  cursor: pointer;
+}
+
+.form-input {
+  margin-bottom: 10px;
+}
+
+.action-button {
+  margin: 10px 40px;
+  padding: 10px 30px;
+  font-size: 16px;
+  border: none;
+  color: #fff;
+  border-radius: 45px;
+  background-color: #1890ff;
+  box-shadow: 0px 15px 20px rgba(24,144,255, 0.4);
+  transition: all 0.3s ease 0s;
+}
+
+.action-button:hover {
+  background-color: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  color: #444;
+  transform: translateY(-7px);
+}
+
+.content-items {
+  text-align: left;
+}
+
+.content-items a {
+  color: #aaa;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.content-delete:hover {
+  color: #ff4d4f;
+}
+
+.content-complete:hover {
+  color: #52c41a;
+}
+
+.content-container {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 24px;
+}
+
+.content-empty {
+  padding: 10px;
+  border: 2px dotted #aaa;
+  margin: 20px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .todo {
+    width: 100%;
+  }
+}
