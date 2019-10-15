@@ -7,7 +7,14 @@ import { Card, Icon } from 'antd';
  *
  */
 
-const ListItem = ({ title, note, status, onRemove, onComplete, id }) => {
+const ListItem = ({ title, note, priority, status, onRemove, onComplete, onEdit, id }) => {
+
+  const content = {
+    id: id,
+    title: title,
+    note: note,
+    priority: priority
+  }
 
   return (
     <Card
@@ -18,8 +25,11 @@ const ListItem = ({ title, note, status, onRemove, onComplete, id }) => {
       }
       extra={
         <div>
-          <a href="/" className="content-complete" onClick={e => onComplete(e, id)}>
-            <Icon type={status ? "check-circle" : "undo"} />
+          <a href="/" className="content-edit" onClick={e => onEdit(e, id, content)}>
+            <Icon type="setting" />
+          </a>
+          <a href="/" className="content-complete" onClick={e => onComplete(e, id, status)}>
+            <Icon type={!status ? "check-circle" : "undo"} />
           </a>
           <a href="/" className="content-delete" onClick={e => onRemove(e, id)}>
             <Icon type="close-circle" />
@@ -40,6 +50,7 @@ ListItem.propTypes = {
   id: PropTypes.number,
   onRemove: PropTypes.func,
   onComplete: PropTypes.func,
+  onEdit: PropTypes.func,
 };
 
 export default ListItem;

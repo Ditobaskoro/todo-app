@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './login.css';
 import { Tabs, message } from 'antd';
-import api from "../../apis"
+import api from "../../apis";
 import LoginForm from '../commons/LoginForm';
 import RegisterForm from '../commons/RegisterForm';
 import {withRouter} from 'react-router-dom';
+
 const { TabPane } = Tabs;
 
 /**

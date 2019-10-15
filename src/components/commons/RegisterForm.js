@@ -21,11 +21,11 @@ const RegisterForm = ({ onSubmit, loading }) => {
   }
 
   return (
-    <Form>
+    <Form onSubmit={e => onFormSubmit(e, email, password, name)}>
       <Input className="form-input" placeholder="Name"  value={name} onChange={e => setName(e.target.value)}/>
       <Input className="form-input" placeholder="Email"  value={email} onChange={e => setEmail(e.target.value)}/>
       <Input type="password" className="form-input" placeholder="Password"  value={password} onChange={e => setPassword(e.target.value)}/>
-      <Button key="submit" type="primary" onClick={e => onFormSubmit(e, email, password, name)} loading={loading}>Register</Button>
+      <Button key="submit" htmlType="submit" type="primary" loading={loading}>Register</Button>
     </Form>
   )
 };

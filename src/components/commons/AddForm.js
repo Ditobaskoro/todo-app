@@ -9,10 +9,10 @@ const { TextArea } = Input;
  *
  */
 
-const AddForm = ({ visible, onSubmit, onCancel }) => {
-  const [title, setTitle] = useState("");
-  const [note, setNote] = useState("");
-  const [priority, setPriority] = useState(1);
+const AddForm = ({ visible, content, onSubmit, onCancel }) => {
+  const [title, setTitle] = useState((content && content.title) || "");
+  const [note, setNote] = useState((content && content.note) || "");
+  const [priority, setPriority] = useState((content && content.priority) || 1);
   
   const formItemLayout = {
     labelCol: { span: 19 },
@@ -20,15 +20,18 @@ const AddForm = ({ visible, onSubmit, onCancel }) => {
   };
 
   const onFormSubmit = (e, title, priority, note) => {
+    e.preventDefault();
     if (title && priority && note) {
-      onSubmit(e, title, priority, note)
+      const isEdit = content ? true : false;
+      const id = content ? content.id : null;
+      onSubmit(isEdit, id, title, priority, note);
     } 
   }
 
   return (
     <Modal
       visible={visible}
-      title="Add Todo"
+      title={`${content ? 'Edit' : 'Add'} Todo`}
       onOk={e => onSubmit(e, title, note)}
       onCancel={onCancel}
       footer={[
@@ -36,7 +39,7 @@ const AddForm = ({ visible, onSubmit, onCancel }) => {
         <Button key="submit" type="primary" onClick={e => onFormSubmit(e, title, priority, note)}>Submit</Button>,
       ]}
     >
-      <Input className="form-input" placeholder="Title"  value={title} onChange={e => setTitle(e.target.value)}/>
+      <Input className="form-input" placeholder="Title" value={title}  onChange={e => setTitle(e.target.value)}/>
       <TextArea className="form-input" placeholder="Note" value={note} onChange={e => setNote(e.target.value)}/>
       <Form.Item {...formItemLayout} label="Priority">
         <InputNumber placeholder="Prio" min={1} max={10} value={priority} onChange={value => setPriority(value)} />
@@ -47,6 +50,7 @@ const AddForm = ({ visible, onSubmit, onCancel }) => {
 
 AddForm.propTypes = {
   visible: PropTypes.bool,
+  content: PropTypes.object,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
 };

@@ -53,6 +53,10 @@
   color: #ff4d4f;
 }
 
+.content-edit:hover {
+  color: #1890ff;
+}
+
 .content-complete:hover {
   color: #52c41a;
 }
