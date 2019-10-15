@@ -9,33 +9,31 @@ const { Option } = Select;
 
 /**
  * Header Component
- * 
+ *
  */
 
 const Header = ({ history, query, filter, setQuery, setFilter }) => {
 
   const onLogout = () => {
     // Log out
-    localStorage.removeItem("auth");
+    localStorage.removeItem('auth');
     history.push('/login');
   }
-  const onChangeFilter = () =>{
 
-  }
-  // filtering list
-  const filterList = ['all','done','undone'];
+  // filter enum list
+  const filterList = ['all', 'done', 'undone'];
 
   return (
     <div className="header">
-      <div className="header-title">
-        TODO LIST
-      </div>
+      <div className="header-title">TODO LIST</div>
       <div className="header-filter">
         <InputGroup>
           <Input style={{ width: '70%' }} value={query} placeholder="Search" onChange={e => setQuery(e.target.value)}/>
           <Select style={{ width: '30%' }} value={filter} placeholder="Filter" onChange={setFilter}>
             {filterList.map(item => (
-              <Option key={item} value={item}>{item}</Option>
+              <Option key={item} value={item}>
+                {item}
+              </Option>
             ))}
           </Select>
         </InputGroup>
@@ -52,7 +50,7 @@ Header.propTypes = {
   query: PropTypes.string,
   filter: PropTypes.string,
   setQuery: PropTypes.func,
-  setFilter: PropTypes.func,
+  setFilter: PropTypes.func
 };
 
-export default withRouter(Header);;
+export default withRouter(Header);

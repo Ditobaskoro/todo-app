@@ -19,6 +19,10 @@
   margin-bottom: 10px;
 }
 
+.form-error {
+  color:#ff4d4f;
+}
+
 .action-button {
   margin: 10px 40px;
   padding: 10px 30px;

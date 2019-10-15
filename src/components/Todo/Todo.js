@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './todo.css';
 import { Spin, message } from 'antd';
 import Header from '../Header';
-import api from "../../apis";
+import api from '../../apis';
 import ListItem from '../commons/ListItem';
 import AddForm from '../commons/AddForm';
 
 /**
  * Todo Component
- * 
+ *
  */
 
 const Todo = () => {
@@ -24,17 +24,18 @@ const Todo = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        api.todo.list(query,filter)
-        .then(res => res && res.json())
-        .then(data => {
-          if(data.statusCode === 200){
-            setTodo(data.data);
-          } else {
-            message.error('Failed getting list')
-          }
-          setIsLoading(false);        
-        })
-      } catch(err) {
+        api.todo
+          .list(query, filter)
+          .then(res => res && res.json())
+          .then(data => {
+            if(data.statusCode === 200){
+              setTodo(data.data);
+            } else {
+              message.error('Failed getting list')
+            }
+            setIsLoading(false);
+          })
+      } catch (err) {
         console.log(err)
         setIsLoading(false);
         message.error('Cannot connect to API');
@@ -49,18 +50,18 @@ const Todo = () => {
     setIsLoading(true);
 
     api.todo.remove(id)
-    .then(res => res && res.json())
-    .then(data => {
-      if(todoList.length > 1){
-        const newList = [...todoList];
-        setTodo(newList.filter(item => item.id !== id));
-        message.success(`Todo removed`);
-      } else {
-        setTodo([]);
-        message.success(`Todo removed`);
-      }
-      setIsLoading(false);
-    });
+      .then(res => res && res.json())
+      .then(data => {
+        if (todoList.length > 1) {
+          const newList = [...todoList];
+          setTodo(newList.filter(item => item.id !== id));
+          message.success(`Todo removed`);
+        } else {
+          setTodo([]);
+          message.success(`Todo removed`);
+        }
+        setIsLoading(false);
+      });
   };
 
   const onEditToggle = (e, id, content) => {
@@ -130,7 +131,7 @@ const Todo = () => {
 
   return (
     <div className="todo">
-      <Header query={query} setQuery={setQuery} filter={filter} setFilter={setFilter}/>
+      <Header query={query} setQuery={setQuery} filter={filter} setFilter={setFilter} />
       <div className="home-content">
         {isLoading ? (
           <Spin /> // loading spinner
@@ -160,7 +161,9 @@ const Todo = () => {
       </div>
       <div className="todo-action">
         {!isAdding ? (
-          <div onClick={() => addTodo(!isAdding)} className="action-button">Add More Todo</div> // adding new Todo
+          <div onClick={() => addTodo(!isAdding)} className="action-button">
+            Add More Todo
+          </div> // adding new Todo
         ) : (
           // add new todo modal
           <AddForm

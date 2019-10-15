@@ -1,7 +1,6 @@
 .login {
   width: 600px;
   min-height: 100vh;
-  padding: 100px;
   color: #444;
   background-color: #fff;
   display: flex;
@@ -12,10 +11,18 @@
 
 .login-title {
   width: 100%;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.login-box {
+  width: 70%;
+  background-color: #eee;
+  padding: 10px;
 }
 
 @media only screen and (max-width: 800px) {
-  .todo {
+  .login {
     width: 100%;
   }
 }

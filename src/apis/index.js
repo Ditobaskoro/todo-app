@@ -1,38 +1,36 @@
-const API_URL = "http://pomonatodo.herokuapp.com"
+const API_URL = 'http://pomonatodo.herokuapp.com';
 
 const request = (method, url, data) => {
-  
   const body = JSON.stringify(data);
   const headers = {
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   }
 
-  const auth = localStorage.getItem("auth");
+  const auth = localStorage.getItem('auth');
 
   if (auth) {
     headers.Authorization = auth;
   }
 
   return fetch(`${API_URL}/${url}`, { method, headers, body })
-  .then(res => {
-    return res;
-  })
-  .catch(err => {
-    console.log(err.message);
-  });
-  
+    .then(res => {
+      return res
+    })
+    .catch(err => {
+      console.log(err.message)
+    });
 }
 
-const get = (url, data) => request("GET", url, data);
-const post = (url, data) => request("POST", url, data);
-const put = (url, data) => request("PUT", url, data);
-const remove = (url, data) => request("DELETE", url, data);
+const get = (url, data) => request('GET', url, data);
+const post = (url, data) => request('POST', url, data);
+const put = (url, data) => request('PUT', url, data);
+const remove = (url, data) => request('DELETE', url, data);
 
 const api = {
   todo: {
     list: (query, filter) => get(`todo/user?q=${query}&filter=${filter}`),
     add: (title, priority, note) =>
-      post("todo", {
+      post('todo', {
         title,
         priority,
         note,
@@ -43,24 +41,24 @@ const api = {
       put(`todo/${id}`, {
         title,
         priority,
-        note,
+        note
       }),
     complete: (id, isDone) =>
       put(`todo/${id}`, {
-        isDone,
+        isDone
       }),
     register: (name, email, password) =>
-      post("auth/register", {
+      post('auth/register', {
         name,
         email,
-        password,
+        password
       }),
     login: (email, password) =>
-      post("auth/login", {
+      post('auth/login', {
         email,
-        password,
-      }),
+        password
+      })
   }
 }
 
-export default api
+export default api;

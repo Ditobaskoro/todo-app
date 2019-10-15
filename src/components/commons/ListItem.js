@@ -20,7 +20,9 @@ const ListItem = ({ title, note, priority, status, onRemove, onComplete, onEdit,
     <Card
       title={
         <div className="content-container">
-          <div className="content-title" style={{ textDecoration: status ? "line-through" : "" }}>{title}</div>
+          <div className="content-title" style={{ textDecoration: status ? 'line-through' : '' }}>
+            {title}
+          </div>
         </div>
       }
       extra={
@@ -29,16 +31,15 @@ const ListItem = ({ title, note, priority, status, onRemove, onComplete, onEdit,
             <Icon type="setting" />
           </a>
           <a href="/" className="content-complete" onClick={e => onComplete(e, id, status)}>
-            <Icon type={!status ? "check-circle" : "undo"} />
+            <Icon type={!status ? 'check-circle' : 'undo'} />
           </a>
           <a href="/" className="content-delete" onClick={e => onRemove(e, id)}>
             <Icon type="close-circle" />
           </a>
         </div>
       }
-      style={{ width: '100%' }}
-    >
-      <p style={{ textDecoration: status ? "line-through" : "" }}>{note}</p>
+      style={{ width: '100%' }}>
+      <p style={{ textDecoration: status ? 'line-through' : '' }}>{note}</p>
     </Card>
   )
 };
@@ -50,7 +51,7 @@ ListItem.propTypes = {
   id: PropTypes.number,
   onRemove: PropTypes.func,
   onComplete: PropTypes.func,
-  onEdit: PropTypes.func,
+  onEdit: PropTypes.func
 };
 
 export default ListItem;
