@@ -30,7 +30,7 @@ const remove = (url, data) => request("DELETE", url, data);
 
 const api = {
   todo: {
-    list: () => get("todo/user"),
+    list: (query, filter) => get(`todo/user?q=${query}&filter=${filter}`),
     add: (title, priority, note) =>
       post("todo", {
         title,

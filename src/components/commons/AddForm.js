@@ -42,7 +42,7 @@ const AddForm = ({ visible, content, onSubmit, onCancel }) => {
       <Input className="form-input" placeholder="Title" value={title}  onChange={e => setTitle(e.target.value)}/>
       <TextArea className="form-input" placeholder="Note" value={note} onChange={e => setNote(e.target.value)}/>
       <Form.Item {...formItemLayout} label="Priority">
-        <InputNumber placeholder="Prio" min={1} max={10} value={priority} onChange={value => setPriority(value)} />
+        <InputNumber placeholder="Prio" min={1} max={3} value={priority} onChange={value => setPriority(value)} />
       </Form.Item> 
     </Modal>
   )

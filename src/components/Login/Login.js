@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './login.css';
 import { Tabs, message } from 'antd';
 import api from "../../apis";
@@ -71,5 +72,8 @@ const Login = ({ history }) => {
   )
 };
 
+Login.propTypes = {
+  history: PropTypes.object,
+};
 
 export default withRouter(Login);

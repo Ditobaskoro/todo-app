@@ -16,13 +16,15 @@ const Todo = () => {
   const [isAdding, addTodo] = useState(false); // toggle add new todo
   const [isLoading, setIsLoading] = useState(true); // loading
   const [tempContent, setTempContent] = useState(null); // temp content for editing todo
+  const [query, setQuery] = useState(''); // query todo
+  const [filter, setFilter] = useState('all'); // filter todo
 
   useEffect(() => {
     // fetch todo from api
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        api.todo.list()
+        api.todo.list(query,filter)
         .then(res => res && res.json())
         .then(data => {
           if(data.statusCode === 200){
@@ -39,7 +41,7 @@ const Todo = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [query, filter]);
 
   const onRemoveTodo = (e, id) => {
     // remove todo
@@ -128,7 +130,7 @@ const Todo = () => {
 
   return (
     <div className="todo">
-      <Header />
+      <Header query={query} setQuery={setQuery} filter={filter} setFilter={setFilter}/>
       <div className="home-content">
         {isLoading ? (
           <Spin /> // loading spinner
