@@ -15,31 +15,31 @@ const list = [
     id:1,
     title: 'test',
     note: 'note',
-    status: 'undone'
+    isDone: false
   },
   {
     id:2,
     title: 'test',
     note: 'note',
-    status: 'undone'
+    isDone: false
   },
   {
     id:3,
     title: 'test',
     note: 'note',
-    status: 'done'
+    isDone: false
   },
   {
     id:4,
     title: 'test',
     note: 'note',
-    status: 'done'
+    isDone: false
   },
   {
     id:5,
     title: 'test',
     note: 'note',
-    status: 'done'
+    isDone: true
   },
 ]
 
@@ -60,7 +60,7 @@ const Todo = () => {
     // remove todo
     e.preventDefault();
     const newList = [...todoList];
-    newList[index].status = newList[index].status === 'done' ? 'undone' : 'done';
+    newList[index].isDone = !newList[index].isDone; 
     setTodo(newList);
   };
   
@@ -91,7 +91,7 @@ const Todo = () => {
           </div> // if todo empty
         ) : !isLoading ? (
           <div className="content-items">
-            {todoList.length > 0 && todoList.map((item,index) => <ListItem title={item.title} note={item.note} status={item.status} onRemove={onRemoveTodo} onComplete={onCompleteTodo} key={item.id} id={index} />)}
+            {todoList.length > 0 && todoList.map((item,index) => <ListItem title={item.title} note={item.note} status={item.isDone} onRemove={onRemoveTodo} onComplete={onCompleteTodo} key={item.id} id={index} />)}
           </div> // list todo
         ) : (
           <Spin /> // loading spinner
