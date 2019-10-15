@@ -3,6 +3,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Demo
 https://todo-app-61f6c.firebaseapp.com
 
+This project using:
+- [Create React App](https://github.com/facebook/create-react-app).
+- [Ant Design](https://ant.design/) UI Framework.
+- [Firebase](https://firebase.google.com) hosting.
+- [Todo API](http://pomonatodo.herokuapp.com) API.
+
 ## Available Scripts
 
 In the project directory, you can run:
