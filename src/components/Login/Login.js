@@ -18,7 +18,8 @@ const Login = ({ history }) => {
   const [loading, setLoading] = useState(false);
 
   const onLogin = (email, password) => {
-    setLoading(true)
+    setLoading(true);
+    
     api.todo.login(email, password)
       .then(res => res && res.json())
       .then(data => {
@@ -29,8 +30,7 @@ const Login = ({ history }) => {
         } else {
           setLoading(false);
           message.error('Login failed, please check your email or password')
-        }
-        
+        }      
       })
       .catch(() => {
         setLoading(false)
