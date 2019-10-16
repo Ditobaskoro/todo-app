@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Input, Button } from 'antd';
 
 /**
- * Register form input
+ * Register form
  *
  */
 
@@ -15,7 +15,7 @@ const RegisterForm = ({ onSubmit, loading }) => {
 
   const onFormSubmit = (e, email, password) => {
     e.preventDefault();
-
+    // form validation
     if (email && password && name) {
       if (!email.match(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
         setError('Wrong Email Format');

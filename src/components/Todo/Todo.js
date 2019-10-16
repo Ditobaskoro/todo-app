@@ -163,15 +163,14 @@ const Todo = () => {
         {!isAdding ? (
           <div onClick={() => addTodo(!isAdding)} className="action-button">
             Add More Todo
-          </div> // adding new Todo
+          </div> // toggle add new todo
         ) : (
-          // add new todo modal
           <AddForm
             visible={isAdding}
             content={tempContent}
             onSubmit={onSubmitTodo}
             onCancel={onCloseModal}
-          />
+          /> // add new todo modal
         )}
       </div>
     </div>

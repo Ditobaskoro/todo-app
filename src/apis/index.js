@@ -1,4 +1,9 @@
-const API_URL = 'http://pomonatodo.herokuapp.com';
+/**
+ * List of API request method
+ *
+ */
+
+const API_URL = 'https://pomonatodo.herokuapp.com';
 
 const request = (method, url, data) => {
   const body = JSON.stringify(data);

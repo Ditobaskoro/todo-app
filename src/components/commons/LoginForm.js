@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Button } from 'antd';
 
-
 /**
- * Login form input
+ * Login form
  *
  */
 
@@ -15,6 +14,7 @@ const LoginForm = ({ onSubmit, loading }) => {
 
   const onFormSubmit = (e, email, password) => {
     e.preventDefault();
+    // form validation
     if (email && password) {
       if (!email.match(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
         setError('Wrong Email Format');

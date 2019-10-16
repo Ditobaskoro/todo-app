@@ -8,7 +8,7 @@ import { Card, Icon } from 'antd';
  */
 
 const ListItem = ({ title, note, priority, status, onRemove, onComplete, onEdit, id }) => {
-
+  // content of todo for editing
   const content = {
     id: id,
     title: title,
