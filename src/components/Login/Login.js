@@ -19,7 +19,7 @@ const Login = ({ history }) => {
 
   const onLogin = (email, password) => {
     setLoading(true);
-    
+
     api.todo.login(email, password)
       .then(res => res && res.json())
       .then(data => {
@@ -45,11 +45,12 @@ const Login = ({ history }) => {
       .then(data => {
         if(data.statusCode === 200){
           localStorage.setItem('auth', data.data.token);
+          setLoading(false);
           history.push('/todo');
         } else {
+          setLoading(false);
           message.error('Register failed');
         }
-        setLoading(false);
       })
       .catch(() =>{
         setLoading(false)
