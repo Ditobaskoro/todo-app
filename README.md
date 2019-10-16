@@ -6,7 +6,7 @@ This project using:
 - [Create React App](https://github.com/facebook/create-react-app).
 - [Ant Design](https://ant.design/) UI Framework.
 - [Heroku](https://www.heroku.com) Hosting.
-- [Todo demo API](http://pomonatodo.herokuapp.com).
+- [Todo demo API](https://pomonatodo.herokuapp.com).
 
 ## Available Scripts
 

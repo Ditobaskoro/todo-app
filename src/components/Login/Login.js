@@ -24,11 +24,13 @@ const Login = ({ history }) => {
       .then(data => {
         if (data.statusCode === 200) {
           localStorage.setItem('auth', data.data.token);
+          setLoading(false);
           history.push('/todo');
         } else {
+          setLoading(false);
           message.error('Login failed, please check your email or password')
         }
-        setLoading(false);
+        
       })
       .catch(() => {
         setLoading(false)
